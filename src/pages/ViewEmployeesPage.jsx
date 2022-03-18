@@ -1,4 +1,8 @@
+import { useEmployeeList } from "../context/employeeListContext";
+
 const ViewEmployeesPage = () => {
+  const { employees } = useEmployeeList();
+  console.log(employees);
   return (
     <>
       <header>

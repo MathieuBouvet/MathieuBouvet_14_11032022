@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import useLocalStorage from "../hooks/useLocalStorage";
+import { useEmployeeList } from "../context/employeeListContext";
 import Modal from "../components/Modal/Modal";
 
 const CreateEmployeePage = () => {
-  const [, setEmployees] = useLocalStorage("employees");
+  const { addEmployee } = useEmployeeList();
 
   const [showCreationNotification, setShowCreationNotification] =
     useState(false);
@@ -34,9 +34,7 @@ const CreateEmployeePage = () => {
       department,
     };
 
-    setEmployees(employees =>
-      Array.isArray(employees) ? [...employees, employee] : [employee]
-    );
+    addEmployee(employee);
 
     setShowCreationNotification(true);
   }
