@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useEmployeeList } from "../context/employeeListContext";
-import Modal from "../components/Modal/Modal";
+import Dialog from "../components/Modal/Dialog";
 
 const CreateEmployeePage = () => {
   const { addEmployee } = useEmployeeList();
@@ -121,12 +121,12 @@ const CreateEmployeePage = () => {
           </select>
           <button className="save-employee-button">save</button>
         </form>
-        <Modal
+        <Dialog
           isOpen={showCreationNotification}
           onClose={() => setShowCreationNotification(false)}
         >
           <div className="creation-notification-modal">Employee Created!</div>
-        </Modal>
+        </Dialog>
       </main>
     </>
   );
