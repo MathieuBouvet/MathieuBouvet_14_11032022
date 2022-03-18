@@ -1,9 +1,13 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import useLocalStorage from "../hooks/useLocalStorage";
+import Modal from "../components/Modal/Modal";
 
 const CreateEmployeePage = () => {
   const [, setEmployees] = useLocalStorage("employees");
+
+  const [showCreationNotification, setShowCreationNotification] =
+    useState(false);
 
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -17,7 +21,7 @@ const CreateEmployeePage = () => {
 
   function handleSubmit(e) {
     e.preventDefault();
-    
+
     const employee = {
       firstName,
       lastName,
@@ -33,6 +37,8 @@ const CreateEmployeePage = () => {
     setEmployees(employees =>
       Array.isArray(employees) ? [...employees, employee] : [employee]
     );
+
+    setShowCreationNotification(true);
   }
   return (
     <>
@@ -117,6 +123,12 @@ const CreateEmployeePage = () => {
           </select>
           <button className="save-employee-button">save</button>
         </form>
+        <Modal
+          isOpen={showCreationNotification}
+          onClose={() => setShowCreationNotification(false)}
+        >
+          <div className="creation-notification-modal">Employee Created!</div>
+        </Modal>
       </main>
     </>
   );

@@ -1,0 +1,67 @@
+@keyframes appear {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes disappear {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.modal-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.75);
+  z-index: 1;
+  animation: appear 0.3s forwards;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-overlay.closing {
+  animation: disappear 0.3s forwards;
+}
+
+.modal {
+  position: relative;
+}
+
+.modal-title {
+  display: flex;
+}
+
+.modal-close-button {
+  --close-button-size: 30px;
+  --button-offset: calc(-1 * var(--close-button-size) / 2 + 3px);
+
+  position: absolute;
+  top: var(--button-offset);
+  right: var(--button-offset);
+
+  margin-left: auto;
+  background-color: black;
+  border: none;
+  border-radius: 50%;
+  width: var(--close-button-size);
+  height: var(--close-button-size);
+  padding: 0;
+  color: white;
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+
+.modal-close-button:hover {
+  transform: scale(1.05);
+}
