@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useEmployeeList } from "../context/employeeListContext";
 import Modal from "../components/Modal/Modal";
 import usePresence from "../hooks/usePresence";
+import Select from "../components/Select/Select";
 
 const CreateEmployeePage = () => {
   const { addEmployee } = useEmployeeList();
@@ -100,14 +101,9 @@ const CreateEmployeePage = () => {
               onChange={e => setCity(e.target.value)}
             />
             <label htmlFor="state-input">State</label>
-            <select
-              id="state-input"
-              value={state}
-              onChange={e => setState(e.target.value)}
-            >
-              <option value="1">one</option>
-              <option value="2">two</option>
-            </select>
+            <Select selected={state} onChange={setState}>
+              {{ 0: "one", 1: "two" }}
+            </Select>
             <label htmlFor="zip-code-input">Zip code</label>
             <input
               type="text"

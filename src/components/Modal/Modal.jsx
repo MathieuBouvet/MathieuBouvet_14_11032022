@@ -1,24 +1,14 @@
-import { useEffect } from "react";
 import PropTypes from "prop-types";
 import usePortal from "react-useportal";
 import cx from "classnames";
 import useClickOutside from "../../hooks/useClickOutside";
+import useOnEscape from "../../hooks/useOnEscape";
 import "./Modal.css";
 
 const Modal = ({ isClosing, onCloseFinished, onCloseRequested, children }) => {
   const { Portal } = usePortal();
-
-  useEffect(() => {
-    function handleEscape(e) {
-      if (e.code === "Escape") {
-        onCloseRequested();
-      }
-    }
-    window.addEventListener("keydown", handleEscape);
-
-    return () => window.removeEventListener("keydown", handleEscape);
-  });
-
+  
+  useOnEscape(onCloseRequested);
   const modalRef = useClickOutside(onCloseRequested);
 
   return (
