@@ -101,8 +101,13 @@ const CreateEmployeePage = () => {
               onChange={e => setCity(e.target.value)}
             />
             <label htmlFor="state-input">State</label>
-            <Select selected={state} onChange={setState}>
-              {{ 0: "one", 1: "two" }}
+            <Select selected={state} onChange={setState} id="state-input">
+              {{
+                0: "one",
+                1: "two",
+                2: "Some long text for testing purposes",
+                4: "Four",
+              }}
             </Select>
             <label htmlFor="zip-code-input">Zip code</label>
             <input

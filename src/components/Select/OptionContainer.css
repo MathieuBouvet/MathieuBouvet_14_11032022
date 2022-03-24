@@ -52,9 +52,20 @@
 }
 
 .option {
+  display: block;
+  width: 100%;
+  border: none;
+  background-color: transparent;
+  text-align: left;
   padding: 5px 15px;
   cursor: pointer;
 }
-.option:hover {
+
+.option.selected {
+  font-weight: bold;
+}
+.option:hover,
+.option:focus {
   background-color: aliceblue;
+  outline: none;
 }
