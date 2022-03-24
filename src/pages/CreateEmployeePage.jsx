@@ -1,13 +1,19 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useEmployeeList } from "../context/employeeListContext";
-import Dialog from "../components/Modal/Dialog";
+import Modal from "../components/Modal/Modal";
+import usePresence from "../hooks/usePresence";
 
 const CreateEmployeePage = () => {
   const { addEmployee } = useEmployeeList();
 
-  const [showCreationNotification, setShowCreationNotification] =
-    useState(false);
+  const [
+    isModalOpened,
+    isModalClosing,
+    setModalOpened,
+    setModalClosing,
+    setModalClosed,
+  ] = usePresence();
 
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -36,7 +42,7 @@ const CreateEmployeePage = () => {
 
     addEmployee(employee);
 
-    setShowCreationNotification(true);
+    setModalOpened();
   }
   return (
     <>
@@ -121,12 +127,15 @@ const CreateEmployeePage = () => {
           </select>
           <button className="save-employee-button">save</button>
         </form>
-        <Dialog
-          isOpen={showCreationNotification}
-          onClose={() => setShowCreationNotification(false)}
-        >
-          <div className="creation-notification-modal">Employee Created!</div>
-        </Dialog>
+        {isModalOpened && (
+          <Modal
+            isClosing={isModalClosing}
+            onCloseFinished={setModalClosed}
+            onCloseRequested={setModalClosing}
+          >
+            <div className="creation-notification-modal">Employee Created!</div>
+          </Modal>
+        )}
       </main>
     </>
   );

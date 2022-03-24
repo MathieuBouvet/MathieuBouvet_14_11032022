@@ -27,7 +27,7 @@ const Modal = ({ isClosing, onCloseFinished, onCloseRequested, children }) => {
         className={cx("modal-overlay", { closing: isClosing })}
         onAnimationEnd={() => {
           if (isClosing) {
-            onCloseFinished(false);
+            onCloseFinished();
           }
         }}
       >
