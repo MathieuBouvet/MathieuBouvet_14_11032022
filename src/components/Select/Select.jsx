@@ -16,10 +16,17 @@ const Select = ({
   id = "",
 }) => {
   const [isOpened, isClosing, setOpened, setClosing, setClosed] = usePresence();
-  const selectedValue = children[selected];
   const [selectRef, boundingRect] = useBoundingRect();
 
   const buttonRef = useRef();
+
+  const optionsData = Array.isArray(children)
+    ? children.reduce((acc, value) => {
+        acc[value] = value;
+        return acc;
+      }, {})
+    : children;
+  const selectedValue = optionsData[selected];
 
   function onOptionClick(value) {
     if (selected !== value) {
@@ -50,7 +57,7 @@ const Select = ({
           boundingRect={boundingRect}
           selected={selected}
         >
-          {children}
+          {optionsData}
         </OptionContainer>
       )}
     </div>
@@ -60,7 +67,10 @@ const Select = ({
 Select.propTypes = {
   selected: PropTypes.string,
   onChange: PropTypes.func,
-  children: PropTypes.objectOf(PropTypes.string),
+  children: PropTypes.oneOfType([
+    PropTypes.objectOf(PropTypes.string),
+    PropTypes.arrayOf(PropTypes.string),
+  ]),
   placeholder: PropTypes.string,
   id: PropTypes.string,
 };

@@ -102,12 +102,13 @@ const CreateEmployeePage = () => {
             />
             <label htmlFor="state-input">State</label>
             <Select selected={state} onChange={setState} id="state-input">
-              {{
-                0: "one",
-                1: "two",
-                2: "Some long text for testing purposes",
-                4: "Four",
-              }}
+              {[
+                "one",
+                "one",
+                "two",
+                "Some long text for testing purposes",
+                "Four",
+              ]}
             </Select>
             <label htmlFor="zip-code-input">Zip code</label>
             <input
