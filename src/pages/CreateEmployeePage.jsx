@@ -4,6 +4,7 @@ import { useEmployeeList } from "../context/employeeListContext";
 import Modal from "../components/Modal/Modal";
 import usePresence from "../hooks/usePresence";
 import Select from "../components/Select/Select";
+import { statesByAbbreviation } from "../data/states";
 
 const CreateEmployeePage = () => {
   const { addEmployee } = useEmployeeList();
@@ -102,13 +103,7 @@ const CreateEmployeePage = () => {
             />
             <label htmlFor="state-input">State</label>
             <Select selected={state} onChange={setState} id="state-input">
-              {[
-                "one",
-                "one",
-                "two",
-                "Some long text for testing purposes",
-                "Four",
-              ]}
+              {statesByAbbreviation}
             </Select>
             <label htmlFor="zip-code-input">Zip code</label>
             <input

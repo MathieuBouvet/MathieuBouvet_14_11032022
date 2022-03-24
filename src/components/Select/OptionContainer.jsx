@@ -8,7 +8,7 @@ import useClickOutside from "../../hooks/useClickOutside";
 import useOnEscape from "../../hooks/useOnEscape";
 
 import getLayoutStyle from "./helpers/getLayoutStyle";
-import makeOptionCycler from "./helpers/makeOptionCycler";
+import useOptionFocus from "./helpers/useOptionFocus";
 
 import "./OptionContainer.css";
 
@@ -27,7 +27,7 @@ const OptionContainer = ({
   const [optionRefs, registerRef] = useListOfRef();
   const initialOptionRef = useRef();
 
-  const cycleThroughOptions = makeOptionCycler(optionRefs.current);
+  const cycleThroughOptions = useOptionFocus(optionRefs.current);
   function requestClose(e) {
     if (!e.currentTarget.contains(e.relatedTarget)) {
       onCloseRequested();
