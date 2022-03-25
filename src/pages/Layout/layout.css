@@ -1,0 +1,61 @@
+.top-bar {
+  background-color: var(--color-brand);
+  color: var(--color-neutral);
+  height: 75px;
+  display: flex;
+  align-items: center;
+  padding: 0 75px;
+}
+
+.app-title {
+  margin: 0;
+  margin-left: 20px;
+}
+.app-title a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.nav-container {
+  height: 100%;
+}
+
+.nav-list {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  margin-left: 45px;
+  list-style: none;
+  height: 100%;
+}
+
+.nav-item {
+  padding: 0;
+  height: 100%;
+  position: relative;
+}
+
+.nav-link {
+  height: 100%;
+  color: inherit;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+  transition: background-color 0.2s ease;
+  flex-grow: 1;
+}
+.nav-link:hover {
+  background-color: rgba(var(--color-neutral-base), 0.1);
+}
+
+.active-marker {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  z-index: 1;
+  height: 4px;
+  background-color: var(--color-tonic);
+
+}

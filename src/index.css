@@ -1,3 +1,29 @@
+:root {
+  --color-brand-base: 31, 30, 34;
+  --color-tonic-base: 66, 129, 164;
+  --color-neutral-base: 220, 220, 221;
+  --color-success-base: 91, 140, 90;
+  --color-error-base: 227, 101, 91;
+
+  --color-brand: rgb(var(--color-brand-base));
+  --color-tonic: rgb(var(--color-tonic-base));
+  --color-neutral: rgb(var(--color-neutral-base));
+  --color-success: rgb(var(--color-success-base));
+  --color-error: rgb(var(--color-error-base));
+
+  --color-text: var(--color-brand);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: sans-serif;
+  font-size: 100%;
+  color: var(--color-text);
+}
+
 body {
   margin: 0;
 }
