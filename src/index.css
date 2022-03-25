@@ -1,7 +1,11 @@
 :root {
   --color-brand-base: 31, 30, 34;
-  --color-tonic-base: 66, 129, 164;
-  --color-neutral-base: 220, 220, 221;
+
+  /* --color-tonic-base: 137, 96, 142; */
+  --color-tonic-base: 53, 135, 164;
+
+  --color-neutral-base: 244, 242, 243;
+
   --color-success-base: 91, 140, 90;
   --color-error-base: 227, 101, 91;
 
@@ -22,6 +26,7 @@ html {
   font-family: sans-serif;
   font-size: 100%;
   color: var(--color-text);
+  background-color: var(--color-neutral);
 }
 
 body {
@@ -38,10 +43,6 @@ label {
   display: block;
   margin-top: 1rem;
   margin-bottom: 10px;
-}
-
-.address {
-  margin-top: 10px;
 }
 
 .save-employee-button {

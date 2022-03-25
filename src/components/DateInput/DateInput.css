@@ -1,0 +1,10 @@
+.date-input:hover::-webkit-calendar-picker-indicator,
+.date-input:focus::-webkit-calendar-picker-indicator {
+  transform: translateY(1px);
+}
+
+.date-input::-webkit-datetime-edit {
+  font-family: sans-serif;
+  font-size: 0.8rem;
+}
+

@@ -1,10 +1,11 @@
 .top-bar {
   background-color: var(--color-brand);
   color: var(--color-neutral);
-  height: 75px;
+  height: 70px;
   display: flex;
   align-items: center;
   padding: 0 75px;
+  box-shadow: 0 0 2px 0 var(--color-brand);
 }
 
 .app-title {
@@ -42,12 +43,14 @@
   text-decoration: none;
   display: flex;
   align-items: center;
-  padding: 0 10px;
+  padding: 0 25px;
   transition: background-color 0.2s ease;
-  flex-grow: 1;
 }
 .nav-link:hover {
-  background-color: rgba(var(--color-neutral-base), 0.1);
+  background-color: rgba(var(--color-neutral-base), 0.05);
+}
+.nav-link:active {
+  background-color: rgba(var(--color-neutral-base), 0.08);
 }
 
 .active-marker {
@@ -57,5 +60,15 @@
   z-index: 1;
   height: 4px;
   background-color: var(--color-tonic);
+}
 
+.main-content {
+  --content-padding: 55px;
+  padding: 0 var(--content-padding);
+  max-width: calc(1024px + 2 * var(--content-padding));
+  margin: auto;
+}
+
+.main-content h2 {
+  font-size: 2rem;
 }

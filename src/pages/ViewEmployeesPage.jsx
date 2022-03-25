@@ -6,7 +6,7 @@ const ViewEmployeesPage = () => {
   return (
     <>
       <header>
-        <h1>Current Employees</h1>
+        <h2>Current Employees</h2>
       </header>
     </>
   );

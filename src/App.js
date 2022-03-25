@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import { EmployeeListProvider } from "./context/employeeListContext";
 
-import CreateEmployeePage from "./pages/CreateEmployeePage";
+import CreateEmployeePage from "./pages/CreateEmployeePage/CreateEmployeePage";
 import NotFoundPage from "./pages/NotFoundPage";
 import ViewEmployeesPage from "./pages/ViewEmployeesPage";
 import Layout from "./pages/Layout/Layout";

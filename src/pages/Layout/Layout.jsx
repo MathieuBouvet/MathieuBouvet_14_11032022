@@ -26,7 +26,7 @@ const Layout = () => {
             </li>
             <li className="nav-item">
               <Link to="/employees" className="nav-link">
-                View Employees
+                View employees
               </Link>
               {location.pathname === "/employees" && (
                 <div ref={ref} className="active-marker"></div>
@@ -35,7 +35,7 @@ const Layout = () => {
           </ul>
         </nav>
       </header>
-      <main className="flex-column-container">
+      <main className="main-content">
         <Outlet />
       </main>
     </>

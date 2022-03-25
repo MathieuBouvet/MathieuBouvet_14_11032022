@@ -11,14 +11,14 @@ function useFlipTransition() {
       y = 0,
       width = 0,
       height = 0,
-    } = ref.current?.getBoundingClientRect();
+    } = ref.current?.getBoundingClientRect() ?? {};
 
     if (
       previousPosition.current !== null &&
       ref.current !== null &&
       previousSize !== null
     ) {
-      const { x: previousX, y: previousY } = previousPosition.current;
+      const { x: previousX, y: previousY } = previousPosition.current ?? {};
 
       const { width: previousWidth, height: previousHeight } =
         previousSize.current;

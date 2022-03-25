@@ -1,10 +1,13 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
-import Modal from "../components/Modal/Modal";
-import Select from "../components/Select/Select";
-import { useEmployeeList } from "../context/employeeListContext";
-import { statesByAbbreviation } from "../data/states";
-import usePresence from "../hooks/usePresence";
+import Modal from "../../components/Modal/Modal";
+import Select from "../../components/Select/Select";
+import { useEmployeeList } from "../../context/employeeListContext";
+import { statesByAbbreviation } from "../../data/states";
+import usePresence from "../../hooks/usePresence";
+import InputGroup from "../../components/InputGroup/InputGroup";
+import DateInput from "../../components/DateInput/DateInput";
+
+import "./CreateEmployeePage.css";
 
 const CreateEmployeePage = () => {
   const { addEmployee } = useEmployeeList();
@@ -49,62 +52,65 @@ const CreateEmployeePage = () => {
   return (
     <>
       <h2>Create employee</h2>
-      <form action="" onSubmit={handleSubmit}>
-        <label htmlFor="first-name-input">First name</label>
-        <input
-          type="text"
+      <form action="" onSubmit={handleSubmit} className="employee-form">
+        <InputGroup
           id="first-name-input"
           value={firstName}
-          onChange={e => setFirstName(e.target.value)}
-        />
-        <label htmlFor="last-name-input">Last name</label>
-        <input
-          type="text"
+          onChange={setFirstName}
+        >
+          First name
+        </InputGroup>
+        <InputGroup
           id="last-name-input"
           value={lastName}
-          onChange={e => setLastName(e.target.value)}
-        />
-        <label htmlFor="birth-date-input">Date of birth</label>
-        <input
-          type="date"
+          onChange={setLastName}
+        >
+          Last name
+        </InputGroup>
+        <DateInput
           id="birth-date-input"
           value={birthDate}
-          onChange={e => setBirthDate(e.target.value)}
-        />
-        <label htmlFor="start-date-input">Start date</label>
-        <input
-          type="date"
+          onChange={setBirthDate}
+        >
+          Date of birth
+        </DateInput>
+        <DateInput
           id="start-date-input"
           value={startDate}
-          onChange={e => setStartDate(e.target.value)}
-        />
+          onChange={setStartDate}
+        >
+          Start date
+        </DateInput>
         <fieldset className="address">
           <legend>Address</legend>
-          <label htmlFor="street-input">Street</label>
-          <input
+          <InputGroup
             type="text"
             id="street-input"
             value={street}
-            onChange={e => setStreet(e.target.value)}
-          />
-          <label htmlFor="city-input">City</label>
-          <input
+            onChange={setStreet}
+          >
+            Street
+          </InputGroup>
+          <InputGroup
             type="text"
             id="city-input"
             value={city}
-            onChange={e => setCity(e.target.value)}
-          />
+            onChange={setCity}
+          >
+            City
+          </InputGroup>
           <label htmlFor="state-input">State</label>
           <Select selected={state} onChange={setState} id="state-input">
             {statesByAbbreviation}
           </Select>
-          <label htmlFor="zip-code-input">Zip code</label>
-          <input
+          <InputGroup
             type="text"
             id="zip-code-input"
             value={zipCode}
-            onChange={e => setZipCode(e.target.value)}
-          />
+            onChange={setZipCode}
+          >
+            Zip code
+          </InputGroup>
         </fieldset>
         <label htmlFor="department-input">Department</label>
         <Select
