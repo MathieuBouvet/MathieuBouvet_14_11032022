@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { useEmployeeList } from "../context/employeeListContext";
 import Modal from "../components/Modal/Modal";
-import usePresence from "../hooks/usePresence";
 import Select from "../components/Select/Select";
+import { useEmployeeList } from "../context/employeeListContext";
 import { statesByAbbreviation } from "../data/states";
+import usePresence from "../hooks/usePresence";
 
 const CreateEmployeePage = () => {
   const { addEmployee } = useEmployeeList();
@@ -114,14 +114,13 @@ const CreateEmployeePage = () => {
             />
           </fieldset>
           <label htmlFor="department-input">Department</label>
-          <select
+          <Select
             id="department-input"
-            value={department}
-            onChange={e => setDepartment(e.target.value)}
+            selected={department}
+            onChange={setDepartment}
           >
-            <option>Sales</option>
-            <option>Marketing</option>
-          </select>
+            {["Sales", "Marketing", "Engineering", "Human Resources", "Legal"]}
+          </Select>
           <button className="save-employee-button">save</button>
         </form>
         {isModalOpened && (
