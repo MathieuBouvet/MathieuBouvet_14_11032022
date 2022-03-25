@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import cx from "classnames";
 import usePortal from "react-useportal";
 
-import useListOfRef from "../../hooks/useListOfRef";
 import useClickOutside from "../../hooks/useClickOutside";
 import useOnEscape from "../../hooks/useOnEscape";
 
@@ -24,10 +23,11 @@ const OptionContainer = ({
   const { Portal } = usePortal();
   useOnEscape(onCloseRequested);
   const optionContainerRef = useClickOutside(onCloseRequested);
-  const [optionRefs, registerRef] = useListOfRef();
   const initialOptionRef = useRef();
+  
+  const { handleOptionFocus, focusFirstOption, registerOption } =
+    useOptionFocus();
 
-  const cycleThroughOptions = useOptionFocus(optionRefs.current);
   function requestClose(e) {
     if (!e.currentTarget.contains(e.relatedTarget)) {
       onCloseRequested();
@@ -40,13 +40,12 @@ const OptionContainer = ({
   }
 
   useEffect(() => {
-    const focusedOption =
-      initialOptionRef.current != null
-        ? initialOptionRef.current
-        : optionRefs.current[0];
-
-    focusedOption?.focus();
-  }, [optionRefs]);
+    if (initialOptionRef.current != null) {
+      initialOptionRef.current.focus();
+    } else {
+      focusFirstOption();
+    }
+  }, [focusFirstOption]);
 
   return (
     <>
@@ -58,7 +57,7 @@ const OptionContainer = ({
             style={getLayoutStyle(boundingRect)}
             onBlur={requestClose}
             onAnimationEnd={close}
-            onKeyDown={cycleThroughOptions}
+            onKeyDown={handleOptionFocus}
           >
             {Object.entries(children).map(([value, text]) => {
               return (
@@ -70,7 +69,7 @@ const OptionContainer = ({
                       if (selected === value) {
                         initialOptionRef.current = node;
                       }
-                      registerRef(node);
+                      registerOption(node);
                     }}
                   >
                     {text ?? value}
