@@ -8,3 +8,8 @@
   font-size: 0.8rem;
 }
 
+.date-input::-webkit-datetime-edit-day-field,
+.date-input::-webkit-datetime-edit-month-field,
+.date-input::-webkit-datetime-edit-year-field {
+  margin: -1px;
+}
