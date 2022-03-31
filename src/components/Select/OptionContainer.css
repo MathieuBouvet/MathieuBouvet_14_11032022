@@ -61,13 +61,22 @@
   text-align: left;
   padding: 5px 15px;
   cursor: pointer;
+  font-family: inherit;
+  font-size: 0.9rem;
+  color: var(--color-text);
+  outline: none;
 }
 
 .option.selected {
   font-weight: bold;
+  color: var(--color-tonic);
+  background-color: rgba(var(--color-tonic-base), 0.1);
 }
-.option:hover,
-.option:focus {
-  background-color: aliceblue;
-  outline: none;
+.option:hover:not(.selected),
+.option:focus:not(.selected) {
+  background-color: var(--color-neutral);
+}
+
+.option.selected:focus, .option.selected:hover {
+  background-color: rgba(var(--color-tonic-base), 0.15);
 }

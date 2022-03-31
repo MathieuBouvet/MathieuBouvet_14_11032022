@@ -1,5 +1,6 @@
 import { useRef } from "react";
 import PropTypes from "prop-types";
+import cx from "classnames";
 
 import usePresence from "../../hooks/usePresence";
 import useBoundingRect from "../../hooks/useBoundingRect";
@@ -12,7 +13,7 @@ const Select = ({
   selected,
   onChange = () => {},
   children = {},
-  placeholder = "Choisir",
+  label = "Choisir",
   id = "",
 }) => {
   const [isOpened, isClosing, setOpened, setClosing, setClosed] = usePresence();
@@ -35,16 +36,25 @@ const Select = ({
     setClosing();
   }
   return (
-    <div className="select" ref={selectRef}>
+    <div
+      className={cx("select input-group", {
+        opened: isOpened,
+        "has-value": selectedValue != null,
+      })}
+      ref={selectRef}
+    >
       <button
         id={id}
         type="button"
-        className="current-selection"
+        className={cx("current-selection input-group-input")}
         onClick={isOpened ? setClosing : setOpened}
         ref={buttonRef}
       >
-        <div className="test">{selectedValue ?? placeholder}</div>
+        <div className="selected-value">{selectedValue ?? ""}</div>
       </button>
+      <label htmlFor={id} className="input-group-label">
+        {label}
+      </label>
       {isOpened && (
         <OptionContainer
           isClosing={isClosing}
