@@ -6,13 +6,28 @@
 
   --color-neutral-base: 244, 242, 243;
 
-  --color-success-base: 91, 140, 90;
   --color-error-base: 227, 101, 91;
 
   --color-brand: rgb(var(--color-brand-base));
   --color-tonic: rgb(var(--color-tonic-base));
   --color-neutral: rgb(var(--color-neutral-base));
-  --color-success: rgb(var(--color-success-base));
+
+  --color-success-hue-sat: 119, 22%;
+  --color-success-lightness: 45%;
+
+  --color-success: hsl(
+    var(--color-success-hue-sat),
+    var(--color-success-lightness)
+  );
+  --color-success-darken: hsl(
+    var(--color-success-hue-sat),
+    calc(var(--color-success-lightness) - 5%)
+  );
+  --color-success-lighten: hsl(
+    var(--color-success-hue-sat),
+    calc(var(--color-success-lightness) + 3%)
+  );
+
   --color-error: rgb(var(--color-error-base));
 
   --color-text: var(--color-brand);

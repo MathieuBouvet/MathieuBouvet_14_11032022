@@ -99,8 +99,12 @@ const CreateEmployeePage = () => {
           >
             City
           </InputGroup>
-          <label htmlFor="state-input">State</label>
-          <Select selected={state} onChange={setState} id="state-input">
+          <Select
+            selected={state}
+            onChange={setState}
+            id="state-input"
+            label="State"
+          >
             {statesByAbbreviation}
           </Select>
           <InputGroup
@@ -112,11 +116,11 @@ const CreateEmployeePage = () => {
             Zip code
           </InputGroup>
         </fieldset>
-        <label htmlFor="department-input">Department</label>
         <Select
           id="department-input"
           selected={department}
           onChange={setDepartment}
+          label="Department"
         >
           {["Sales", "Marketing", "Engineering", "Human Resources", "Legal"]}
         </Select>
