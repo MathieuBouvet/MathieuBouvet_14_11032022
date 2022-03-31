@@ -51,7 +51,7 @@ const CreateEmployeePage = () => {
   }
   return (
     <>
-      <h2>Create employee</h2>
+      <h2 className="create-employee-title">Create employee</h2>
       <form action="" onSubmit={handleSubmit} className="employee-form">
         <InputGroup
           id="first-name-input"
