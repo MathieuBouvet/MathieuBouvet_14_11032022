@@ -36,10 +36,12 @@ function useFlipTransition() {
   });
 
   useEffect(() => {
-    if (ref.current !== null) {
-      ref.current.style.transform = `translate(0, 0) scale(1,1)`;
-      ref.current.style.transition = "transform ease 0.3s";
-    }
+    setTimeout(() => {
+      if (ref.current !== null) {
+        ref.current.style.transform = `translate(0, 0) scale(1,1)`;
+        ref.current.style.transition = "transform ease 0.3s";
+      }
+    });
   });
 
   return ref;
