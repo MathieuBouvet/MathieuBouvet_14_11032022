@@ -1,13 +1,13 @@
 import { useEffect, useRef } from "react";
 import PropTypes from "prop-types";
 import cx from "classnames";
-import usePortal from "react-useportal";
 
-import useClickOutside from "../../hooks/useClickOutside";
 import useOnEscape from "../../hooks/useOnEscape";
 
 import getLayoutStyle from "./helpers/getLayoutStyle";
 import useOptionFocus from "./helpers/useOptionFocus";
+
+import Portal from "../Portal/Portal";
 
 import "./OptionContainer.css";
 
@@ -20,9 +20,7 @@ const OptionContainer = ({
   isClosing,
   boundingRect = {},
 }) => {
-  const { Portal } = usePortal();
   useOnEscape(onCloseRequested);
-  const optionContainerRef = useClickOutside(onCloseRequested);
   const initialOptionRef = useRef();
   
   const { handleOptionFocus, focusFirstOption, registerOption } =
@@ -52,7 +50,7 @@ const OptionContainer = ({
       <Portal>
         <div className={cx("select-overlay")}>
           <ul
-            ref={optionContainerRef}
+            // ref={optionContainerRef}
             className={cx("option-container", { isClosing })}
             style={getLayoutStyle(boundingRect)}
             onBlur={requestClose}

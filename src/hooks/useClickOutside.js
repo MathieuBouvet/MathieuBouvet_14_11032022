@@ -5,6 +5,7 @@ function useClickOutside(onClickOutside) {
 
   useEffect(() => {
     function handleClick(e) {
+      console.log("clicked", ref.current, e.target)
       if (ref.current != null && !ref.current.contains(e.target)) {
         onClickOutside(e);
       }
