@@ -11,8 +11,35 @@
   from {
     opacity: 1;
   }
+  50% {
+    opacity: 1;
+  }
   to {
     opacity: 0;
+  }
+}
+
+@keyframes pop-in {
+  from {
+    transform: scale(0.8);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+@keyframes pop-out {
+  from {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.08);
+  }
+  to {
+    transform: scale(0.8);
   }
 }
 
@@ -22,7 +49,7 @@
   left: 0;
   bottom: 0;
   right: 0;
-  background-color: rgba(0, 0, 0, 0.75);
+  background-color: rgba(0, 0, 0, 0.5);
   z-index: 1;
   animation: appear 0.3s forwards;
   display: flex;
@@ -36,32 +63,44 @@
 
 .modal {
   position: relative;
+  background-color: var(--color-neutral);
+  padding: 15px;
+  border-radius: 4px;
+  box-shadow: 0 0 8px -3px #333333;
+
+  animation: pop-in 0.3s forwards;
+}
+
+.modal.closing {
+  animation: pop-out 0.3s forwards;
+}
+
+.modal-header {
+  min-width: 450px;
+  position: relative;
 }
 
 .modal-title {
-  display: flex;
+  margin: 0;
 }
 
 .modal-close-button {
-  --close-button-size: 30px;
-  --button-offset: calc(-1 * var(--close-button-size) / 2 + 3px);
+  --close-button-size: 40px;
 
-  position: absolute;
-  top: var(--button-offset);
-  right: var(--button-offset);
-
-  margin-left: auto;
-  background-color: black;
+  background-color: transparent;
   border: none;
   border-radius: 50%;
   width: var(--close-button-size);
   height: var(--close-button-size);
   padding: 0;
-  color: white;
-  font-size: 1.1rem;
+  color: rgb(158, 158, 158);
+  font-size: 1.5rem;
   cursor: pointer;
+  position: absolute;
+  top: -5px;
+  right: -5px;
 }
 
 .modal-close-button:hover {
-  transform: scale(1.05);
+  background-color: rgba(0, 0, 0, 0.04);
 }

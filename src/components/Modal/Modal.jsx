@@ -5,7 +5,13 @@ import useOnEscape from "../../hooks/useOnEscape";
 import Portal from "../Portal/Portal";
 import "./Modal.css";
 
-const Modal = ({ isClosing, onCloseFinished, onCloseRequested, children }) => {
+const Modal = ({
+  title,
+  isClosing,
+  onCloseFinished,
+  onCloseRequested,
+  children,
+}) => {
   useOnEscape(onCloseRequested);
   const modalRef = useClickOutside(onCloseRequested);
 
@@ -19,12 +25,15 @@ const Modal = ({ isClosing, onCloseFinished, onCloseRequested, children }) => {
           }
         }}
       >
-        <div className="modal" ref={modalRef}>
-          <button className="modal-close-button" onClick={onCloseRequested}>
-            ✕
-          </button>
+        <section className={cx("modal", { closing: isClosing })} ref={modalRef}>
+          <header className="modal-header">
+            <h2 className="modal-title">{title}</h2>
+            <button className="modal-close-button" onClick={onCloseRequested}>
+              ✕
+            </button>
+          </header>
           {children}
-        </div>
+        </section>
       </div>
     </Portal>
   );
@@ -34,6 +43,7 @@ Modal.propTypes = {
   isClosing: PropTypes.bool.isRequired,
   onCloseRequested: PropTypes.func,
   onCloseFinished: PropTypes.func,
+  title: PropTypes.string,
   children: PropTypes.node,
 };
 

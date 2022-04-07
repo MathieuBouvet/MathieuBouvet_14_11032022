@@ -48,28 +48,9 @@ body {
   margin: 0;
 }
 
-.flex-column-container {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-}
-
 label {
   display: block;
   margin-top: 1rem;
   margin-bottom: 10px;
 }
 
-.save-employee-button {
-  display: block;
-  margin: auto;
-  margin-top: 15px;
-}
-
-.creation-notification-modal {
-  padding: 15px 30px;
-  width: 440px;
-  box-shadow: 0 0 10px #000;
-  background-color: white;
-  border-radius: 8px;
-}

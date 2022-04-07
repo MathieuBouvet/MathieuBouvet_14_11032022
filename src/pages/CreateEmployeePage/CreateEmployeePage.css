@@ -19,6 +19,9 @@
 }
 
 .save-employee-button {
+  display: block;
+  margin: auto;
+  margin-top: 15px;
   border-radius: 4px;
   border: none;
   background-color: var(--color-success);

@@ -128,11 +128,12 @@ const CreateEmployeePage = () => {
       </form>
       {isModalOpened && (
         <Modal
+          title="Success"
           isClosing={isModalClosing}
           onCloseFinished={setModalClosed}
           onCloseRequested={setModalClosing}
         >
-          <div className="creation-notification-modal">Employee Created!</div>
+          <p className="creation-notification-modal">Employee Created!</p>
         </Modal>
       )}
     </>
