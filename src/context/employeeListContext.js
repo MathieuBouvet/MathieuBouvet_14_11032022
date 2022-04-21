@@ -9,7 +9,11 @@ const EmployeeListProvider = ({ children }) => {
   const [state, setState] = useState(existingEmployeeList ?? []);
 
   const context = {
-    employees: state,
+    employees: state.map(employee => ({
+      ...employee,
+      startDate: new Date(employee.startDate),
+      birthDate: new Date(employee.birthDate),
+    })),
     addEmployee: employee =>
       setState(s => {
         const newEmployeeList = [...s, employee];

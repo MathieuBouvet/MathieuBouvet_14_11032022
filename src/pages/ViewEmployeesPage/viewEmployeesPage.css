@@ -1,0 +1,4 @@
+.pagination {
+  --pagination-button-active-bg-color: rgba(var(--color-tonic-base), 0.55);
+  --pagination-button-hover-bg-color: rgba(var(--color-tonic-base), 0.15)
+}

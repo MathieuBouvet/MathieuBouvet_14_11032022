@@ -4,7 +4,7 @@ import { EmployeeListProvider } from "./context/employeeListContext";
 
 import CreateEmployeePage from "./pages/CreateEmployeePage/CreateEmployeePage";
 import NotFoundPage from "./pages/NotFoundPage";
-import ViewEmployeesPage from "./pages/ViewEmployeesPage";
+import ViewEmployeesPage from "./pages/ViewEmployeesPage/ViewEmployeesPage";
 import Layout from "./pages/Layout/Layout";
 
 function App() {
