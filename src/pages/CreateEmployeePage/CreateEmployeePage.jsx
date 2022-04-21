@@ -34,6 +34,7 @@ const CreateEmployeePage = () => {
     e.preventDefault();
 
     const employee = {
+      id: Date.now(),
       firstName,
       lastName,
       birthDate,
